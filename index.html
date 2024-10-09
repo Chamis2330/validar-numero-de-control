@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar Número de Control</title>
+    <link rel="stylesheet" href="stylo.css">
+    
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Validar Número de Control</h2>
+        <form id="controlForm" action="">
+            <div class="input-group">
+                <label for="controlNumber">Número de Control</label>
+                <input type="text" id="controlNumber" placeholder="Ingresa tu número de control" required></input>
+                <span class="error-message" id="errorMessage">El número de control debe empezar con "2184" y tener 8 dígitos.</span>
+            </div >
+            <button type="submit" class="submit-btn">Validar</button>
+        </form>
+    </div>
+</body>
+<script>
+    document.getElementById('controlForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevenir envío del formulario
+    const controlNumberInput = document.getElementById('controlNumber');
+    const errorMessage = document.getElementById('errorMessage');
+
+    const controlNumberPattern = /^2184\d{4}$/; // Patrón que verifica que empiece con "2184" y tenga 8 dígitos en total
+
+    if (!controlNumberPattern.test(controlNumberInput.value)) {
+        errorMessage.style.display = 'block'; // Mostrar mensaje de error
+    } else {
+        errorMessage.style.display = 'none'; // Ocultar mensaje de error
+        alert('Número de control válido');
+        
+    }
+});
+
+</script>
+
+</html>
